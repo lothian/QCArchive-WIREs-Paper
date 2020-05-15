@@ -1,0 +1,98 @@
+Reviewer: 1
+
+Comments to the Author(s) 
+The manuscript documents an ongoing effort to establish a computational
+chemistry resource that provides both extensive data and associated tools for 
+computation and analysis.  Their open-source and community-driven approach is
+commendable, and the manuscript is publishable after the following points are
+taken into consideration.
+
+1) The objectives of the project are ambitious and no doubt many previous
+attempts have floundered due to problems arising during their development.
+Despite this, there is little discussion on the challenges faced in the 
+QCArchive project, what possible solutions were considered, and the reasoning
+behind the resolutions of these challenges.  For example, can data from
+multiple programs be combined into one data set and, if so, how are the various
+program options (the defaults of which can vary widely across packages) treated?
+When can levels of theory from two different packages be considered equivalent?
+(SCF convergence thresholds, algorithms, DFT grids etc.)  How are excited
+states handled?
+
+\textbf{Response:} @Comments This seems like a lot to add and the examples provided show that multiple programs can be combined into a dataset. I have added a single line "For example, unique identifiers for given single point computation are molecule, method, basis, program, and keyword arguments create a unique computation." to help offset some of their arguments. I would be curious about how much to work through here in attempting to answer them.
+
+BPP: Data from multiple programs can be combined into one data set. Data is stored/retrieved/displayed based on the unique identifiers given above. Trying to reconcile the 'same' calculation using different software is beyond the scope of the project, and is one area where previous projects may have stumbled. Excited states are not currently handled, but planned.
+
+
+2) I downloaded the software and, although I was able to run the examples in the 
+manuscript, it felt very much like I had been given a few fish and not taught
+how to fish.  Perhaps the authors could include some examples of how to access
+help topics, and how to obtain listings of valid keywords and data identifiers.
+Without these the experience feels like groping around in the dark.
+
+\textbf{Response: } @Comments This is an open problem and something that is being worked on. This question feel like Ben should answer. Ditto to above.
+We have some examples here: https://qcarchive.molssi.org/examples/
+
+BPP: Not sure how to phrase this, but the usability aspect is the first area I am tackling, since it confused me as well. I agree that it can be inconsistent and poorly documented.
+
+3) An important aspect of any collection of data such as the MQCAS is data
+integrity.  Provenance meta-data are included, which would allow for bulk data
+invalidation if a bug were to be discovered, but what about other potential
+problems such as SCF convergence to a saddle point?  Figure 1.  indicates a
+review process is carried out on contributions to the database, but no details
+are given.  I think for a topic which is so central to the project, more
+discussion is required.
+
+\textbf{Response:} @Comments I have added the line "Submitted datasets are reviewed by the \mqcas maintainers for integrity and often require comparisons to literature values to ensure consistency before accepting a contribution." We only started a formal process starting to accept contributions, this is something quite tricky.
+
+4) In Section 3.2 four software components are mentioned (page 7, line 25), yet 
+five are summarised in the subsequent bullet points.  Furthermore, only four of
+of the five are expanded on in the following sub-subsections (QCSchema is not 
+covered).
+
+\textbf{Response:} @Comments We may want to simply remove QCSchema or we can add a small blurb about it. Mostly I want to avoid describing it in too much detail as it requires its own paper with many more authors.
+
+5) It would be interesting to know if there are any efforts being made toward
+integrating other chemical databases such as ChemSpider and whether or not 
+an HTTP API exists or is being considered.
+
+\textbf{Response:} We have had several conversation with PubChem and Citrine about cross referencing data, but no movement on this front has happened as of yet. QCFractal interacts exclusively over standard TCP/IP (HTTP/REST) protocols that can be accessed from any language as discussed briefly in Fig 4. 
+@Comment we may want to add a small discussion on REST interfaces, but I didn't see a good place to slot this in.
+
+==================================================================================
+
+Reviewer: 2
+
+Comments to the Author(s) 
+The authors provide an overview of a new archive for quantum-chemical data that is accessible for free for users. It offers a large variety of options, interfaces with many quantum-chemical programs and shows huge potential for further extension. This is without doubt a great initiative. The article is well written and easy to follow and has the potential for a large number of citations as soon as more users have become aware of this initiative. 
+
+The article can almost be published as is and I would just like to mention four points for a very minor revision.
+
+1) Ultimately, it is up to the editor to decide on the article type, but as this article does not provide an in-depth review of a methodology published in the literature but revolves more around software for data mining, I feel that a more appropriate article type would be “Software Focus”.
+
+\textbf{Response:} Ok?
+
+2) Could the authors comment on their strategies to ensure that existing databases are monitored for updates? For instance, they use reaction databases such as ACONF, S22, etc. and in the past the reference values for such sets have been updated multiple times. In addition to having access to structures and low-level energies, it is also important for the CMS community to keep track of the currently most accurate reference data.
+
+\textbf{Response:} The authors agree which is why the authors attempt to keep up to date on the literature and update the values where available and have also created the open gateway to adding additional values. An example of this is the S22 dataset where currently the original benchmark values as well as the "S22a" and "S22b" have been added to the dataset.
+
+3) Ref. 63 is not the correct reference for the B3LYP functional. 
+\textbf{Response:} @TDC, this is the one I typically use. Do you have a better one?
+
+4) It is common to write “def2-SVP” instead of “def2-svp”.
+\textbf{Response:} All instance have of "def2-svp" have been changed to "def2-SVP". 
+
+==================================================================================
+
+Reviewer: 3
+
+Comments to the Author(s) 
+The review by Smith et al. describes the QCArchive project. This is an initiative by The Molecular Sciences Software Institute (MolSSI). QCArchive is an important resource that aims to organize, curate, and share quantum chemistry data for the benefit of the entire computational molecular sciences community. QCArchive consists of multiple fully open sources of SW modules that control specific functionalities. All are accessible via GitHub. I think this is an extremely useful review that gives an introduction about the basic functionality of QCArchive and provides short snippets of code & how to use it. This manuscript is well written and overall as a great fit for WIRES CMS.
+
+My only minor comments would be:
+1.	For the benefit of users and readers, it would be nice is to supplement code snippets with links to the entire example/tutorial in the jupyter notebook.
+
+\textbf{Response:} A link an example notebook has been added to the manuscript (https://docs.qcarchive.molssi.org/projects/QCFractal/en/stable/quickstart.html).
+
+2.	Is QCArchive unique? Are there any comparable efforts in the EU or perhaps in China? It would be great to complement conclusions with comparison (if any).
+
+\textbf{Response:} As far as we are aware QCArchive is unique within the space of quantum chemistry, there are a number of initiatives within quantum materials such as NOMAD and Materials Project that were discussed at the beginning of the paper.
