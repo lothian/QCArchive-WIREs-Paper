@@ -66,6 +66,10 @@
 \affiliation{
     Molecular Sciences Software Institute,
     Blacksburg, Virginia 24060, USA}
+\author{Benjamin P. Pritchard}
+\affiliation{
+    Molecular Sciences Software Institute,
+    Blacksburg, Virginia 24060, USA}
 \author{T. Daniel Crawford}
 \affiliation{
     Department of Chemistry, Virginia Tech,
@@ -73,7 +77,6 @@
 \alsoaffiliation{
     Molecular Sciences Software Institute,
     Blacksburg, Virginia 24060, USA}
-
 
 
 % My group uses this method for storing comments in latex. Is that OK with you?
@@ -101,7 +104,9 @@ The \qcai is open-source (BSD-3C), code repositories can be found at \url{https:
 
 Data-driven research is uniquely positioned to advance the computational molecular sciences (CMS), and the current rapid movement of the field towards modern data science techniques only reinforces this stance.
 Successful examples of data-based initiatives in inorganic materials science include the Materials Project\cite{Jain2013} with 110,000+ registered users, the NOMAD Laboratory\cite{Draxl2018NOMAD} with approximately 100 million stored computations, and AFlow\cite{Toher2018AFlow} with nearly three million compounds.
-Collectively, these and other efforts are enabling new science in their fields by allowing access to unprecedented quantities of data. \cite{natureed2019, Thygesen2016makingthemost} 
+
+Collectively, these and other efforts (e.g., ioChem-BD,\cite{iochem-bd} the Pitt Quantum Repository,\cite{PQR} and
+the Computational Chemistry Comparison and Benchmark DataBase\cite{CCCBDB}) are enabling new science in their fields by allowing access to unprecedented quantities of data. \cite{natureed2019, Thygesen2016makingthemost} 
 Data repositories also naturally enable more reproducible and replicable science. \cite{NAP25303,Widener2019}
 Up to this point, however, there has been no similar-scale initiative for quantum chemistry (QC).
 %to fill this gap and few organizations who have the resources to launch such an initiative and collect the associated rewards.  
@@ -175,15 +180,15 @@ The open-source \qcai is already used by a number of research groups that are un
 \subsection{Software Components}
 
 The \qcai software components unify to form a platform that can represent computations as structured data, automatically run those computations on a diverse set of physical resources, store computation results, and provide a Python-based front-end to submit and query computations.
-In addition to forming a complete platform, the four software components were carefully constructed to be usable outside of the \qca stack to maximize community utility and reusability.
+In addition to forming a complete platform, the five software components were carefully constructed to be usable outside of the \qca stack to maximize community utility and reusability.
 A brief overview of each component can be found below:
 
 \begin{itemize}
-    \item \qcsk - A community built key-value/array description of QC (or QC-like) objects such as molecules and input/output quantities from QC programs. \url{https://github.com/MolSSI/QCSchema}
     \item \qcel - Periodic table information, version-controlled physical constants, molecule parsing, testing infrastructure, and \qcsk models. \url{https://github.com/MolSSI/QCElemental}
     \item \qcng - Quantum chemistry and CMS community program executor with \qcsk enforced input/output models. \url{https://github.com/MolSSI/QCEngine}
     \item \qcf - Distributed task scheduler and executor, database store for chemistry results, and organization of results at scale. \url{https://github.com/MolSSI/QCFractal}
     \item \qcptl - Data querying, visualization, organization, and statistical analysis for chemistry-related results and a front-end client for \qcf. \url{https://github.com/MolSSI/QCPortal}
+    \item \qcsk - A community built key-value/array description of QC (or QC-like) objects such as molecules and input/output quantities from QC programs. (This important component, which has been developed somewhat separately from the rest of the \qca package, will be decscribed in a later publication.) \url{https://github.com/MolSSI/QCSchema}
 \end{itemize}
 
 
@@ -276,7 +281,9 @@ A short example computation can be found in Fig.~\ref{fig:qcengine}.
 \subsubsection{QCFractal}
 
 \qcf is the central server of the \qca platform, providing distributed computing, data storage, and data querying capabilities.
-Fundamentally \qcf is a campaign manager designed for long-duration (years) deployments to passively manage all computation and data storage requirements for an individual researcher or groups of researchers concurrently.
+Fundamentally \qcf is a campaign manager designed for long-duration (years) deployments to passively manage all
+computation and data storage requirements for an individual researcher or groups of researchers concurrently. (See
+the tutorial at \url{https://docs.qcarchive.molssi.org/projects/QCFractal/en/stable/quickstart.html} for an example of the \qcf ecosystem.)
 For reference, the \mqcas has currently run for eight months without issue, serves data to over a thousand unique users per month, and evaluates 1--5M tasks per month.
 It is estimated that the \mqcas has the projected capacity to scale by at least 15 fold without optimization.
 
@@ -354,9 +361,15 @@ Molecules are added with an alias for later reference along with the zero-index 
     \label{fig:torsiondrive1}
 \end{figure}
 
-The second stage involves the specification of the level of theory for each TorsionDrive computation. 
-To provide a diverse example, a force field (MMFF94~\cite{halgren1996merck}), machine-learned potential (ANI-1x~\cite{smith2018less}), and a quantum chemistry level of theory (B3LYP-D3(BJ)/def2-SVP~\cite{becke1992density,grimme2011effect,weigend2005a}) are chosen.
-For each specification, the geometry optimization program, method, basis set (optionally), and gradient evaluation program are also chosen. Finally, calculations are submitted to the \qcf server's queue (Fig.~\ref{fig:torsiondrive2}). 
+The second stage involves the specification of the level of theory for each
+TorsionDrive computation.  To provide a diverse example, a force field
+(MMFF94~\cite{halgren1996merck}), machine-learned potential
+(ANI-1x~\cite{smith2018less}), and a quantum chemistry level of theory
+(B3LYP-D3(BJ)/def2-SVP~\cite{Becke93,Lee88:LYP,weigend2005a})
+are chosen.  For each specification, the geometry optimization program,
+method, basis set (optionally), and gradient evaluation program are also
+chosen. Finally, calculations are submitted to the \qcf server's queue
+(Fig.~\ref{fig:torsiondrive2}).
 
 \begin{figure}[H]
     \centering
