@@ -105,8 +105,8 @@ The \qcai is open-source (BSD-3C), code repositories can be found at \url{https:
 Data-driven research is uniquely positioned to advance the computational molecular sciences (CMS), and the current rapid movement of the field towards modern data science techniques only reinforces this stance.
 Successful examples of data-based initiatives in inorganic materials science include the Materials Project\cite{Jain2013} with 110,000+ registered users, the NOMAD Laboratory\cite{Draxl2018NOMAD} with approximately 100 million stored computations, and AFlow\cite{Toher2018AFlow} with nearly three million compounds.
 
-Collectively, these and other efforts (e.g., ioChem-BD,\cite{iochem-bd} the Pitt Quantum Repository,\cite{PQR} and
-the Computational Chemistry Comparison and Benchmark DataBase\cite{CCCBDB}) are enabling new science in their fields by allowing access to unprecedented quantities of data. \cite{natureed2019, Thygesen2016makingthemost} 
+Collectively, these and other efforts \textcolor{red}{(e.g., ioChem-BD,\cite{iochem-bd} the Pitt Quantum Repository,\cite{PQR} and
+the Computational Chemistry Comparison and Benchmark DataBase\cite{CCCBDB})} are enabling new science in their fields by allowing access to unprecedented quantities of data. \cite{natureed2019, Thygesen2016makingthemost} 
 Data repositories also naturally enable more reproducible and replicable science. \cite{NAP25303,Widener2019}
 Up to this point, however, there has been no similar-scale initiative for quantum chemistry (QC).
 %to fill this gap and few organizations who have the resources to launch such an initiative and collect the associated rewards.  
@@ -157,7 +157,8 @@ The \mqcas also adheres to Findable, Accessible, Interoperable, and Reusable (FA
 The \mqcas can also be used by the community for those in collaboration with MolSSI and who have target data in mind.
 In these instances, the community groups can submit new datasets and computations to the \mqcas but are required to supply physical resources to evaluate submitted computational tasks.
 Several examples are the Open Force Field Initiative to expand data for force field fitting and ``A Collection of Chemistry DataBases'' (ACCDB)\cite{doi:10.1002/jcc.25761} who is assisting the expansion of literature datasets.
-Submitted datasets are reviewed by the \mqcas maintainers for integrity and often require comparisons to literature values to ensure consistency before accepting a contribution.
+\textcolor{red}{Submitted datasets are reviewed by the \mqcas maintainers for integrity and often require comparisons
+to literature values to ensure consistency before accepting a contribution.}
 Expanding the community program is central to the long term goals of the \mqcas, and additional community groups are actively sought.
 
 The software stack supporting the \mqcas, dubbed \qcai, is open-source and modular for reuse by the CMS community.
@@ -188,7 +189,9 @@ A brief overview of each component can be found below:
     \item \qcng - Quantum chemistry and CMS community program executor with \qcsk enforced input/output models. \url{https://github.com/MolSSI/QCEngine}
     \item \qcf - Distributed task scheduler and executor, database store for chemistry results, and organization of results at scale. \url{https://github.com/MolSSI/QCFractal}
     \item \qcptl - Data querying, visualization, organization, and statistical analysis for chemistry-related results and a front-end client for \qcf. \url{https://github.com/MolSSI/QCPortal}
-    \item \qcsk - A community built key-value/array description of QC (or QC-like) objects such as molecules and input/output quantities from QC programs. (This important component, which has been developed somewhat separately from the rest of the \qca package, will be decscribed in a later publication.) \url{https://github.com/MolSSI/QCSchema}
+    \item \qcsk - A community built key-value/array description of QC (or QC-like) objects such as molecules and
+input/output quantities from QC programs. \textcolor{red}{(This important component, which has been developed
+somewhat separately from the rest of the \qca package, will be decscribed in a later publication.)} \url{https://github.com/MolSSI/QCSchema}
 \end{itemize}
 
 
@@ -282,8 +285,7 @@ A short example computation can be found in Fig.~\ref{fig:qcengine}.
 
 \qcf is the central server of the \qca platform, providing distributed computing, data storage, and data querying capabilities.
 Fundamentally \qcf is a campaign manager designed for long-duration (years) deployments to passively manage all
-computation and data storage requirements for an individual researcher or groups of researchers concurrently. (See
-the tutorial at \url{https://docs.qcarchive.molssi.org/projects/QCFractal/en/stable/quickstart.html} for an example of the \qcf ecosystem.)
+computation and data storage requirements for an individual researcher or groups of researchers concurrently. 
 For reference, the \mqcas has currently run for eight months without issue, serves data to over a thousand unique users per month, and evaluates 1--5M tasks per month.
 It is estimated that the \mqcas has the projected capacity to scale by at least 15 fold without optimization.
 
@@ -292,7 +294,8 @@ The SQL database is structured so that each type of \qcel object stored (\texttt
 For example, a single \texttt{Molecule} object can be related to many different energy or gradient calculations so that the molecule is not duplicated, saving space, and all computations related to the molecule can be quickly queried.
 Each stored object has a carefully constructed unique identifier that can be computed from the object itself.
 The unique identifier makes it trivial to identify duplicate records and prevent the same calculation from being run twice.
-For example, unique identifiers for given single point computation are molecule, method, basis, program, and keyword arguments create a unique computation.
+\textcolor{red}{For example, unique identifiers for given single point computation are molecule, method, basis,
+program, and keyword arguments create a unique computation.}
 If a computation with the same molecule is requested by another computation, each computation links to the same molecule in the database.
 This linking structure makes tedious composite computations of multiple molecular properties effortless.
 
@@ -391,7 +394,8 @@ In addition to the plot, every geometry optimization, molecule, gradient evaluat
 \end{figure}
 
 Large datasets in the \mqcas can contain hundreds of thousands of molecules (rows) and hundreds of computational methods (columns).
-A \qcf quick start guide to reproduce the above example can be found on our website \cite{QCFractal:Quickstart}.
+\textcolor{red}{A \qcf quick start guide to reproduce the above example can be found on our website
+\cite{QCFractal:Quickstart}.}
 
 \section{Web Applications}
 
