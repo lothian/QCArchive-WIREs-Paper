@@ -233,7 +233,7 @@ The persistent use of \qcsk descriptions in \qcng simplifies writing software th
 The input to all computations is a \qcsk specification document, such as an \texttt{AtomicInput} describing standard input to atomistic calculations (e.g., gradient evaluations).
 Very few aspects of the inputs to \qcng are tied to the actual code which will fulfill the specified calculation, allowing users to efficiently perform computations with different quantum chemistry codes as scientific demands change.
 The output from the codes is also returned in a standardized form, which simplifies databases and any software to analyze the outputs of a QC program.
-Two examples: 1) a Hessian computed with Psi4\cite{Parrish:2017:3185} and NWChem\cite{Valiev:2010:1477} can be analyzed with the same software and
+Two examples: 1) a Hessian computed with Psi4\cite{Parrish:2017:3185,Smith:2020:psi4} and NWChem\cite{Apra:2020:nwchem} can be analyzed with the same software and
 2) the geomeTRIC optimization package\cite{ping2016geometric, GH20:geometric} uses \qcng as an interface to different quantum chemistry packages so as to be agnostic the backend program.
 
 \qcng also automatically gathers information needed to reproduce calculations. 
@@ -248,10 +248,10 @@ Currently the following programs are interfaced to \qcng:
      \item {\it Quantum Chemistry}:
      CFOUR,\cite{WEB19:cfour}
      Entos,\cite{Manby:2019:entos} 
-     GAMESS,\cite{GAMESS:2005}
+     GAMESS,\cite{Barca:2020:gamess}
      Molpro,\cite{WEB20:molpro,MOLPRO-WIREs}
-     NWChem,\cite{Valiev:2010:1477}
-     Psi4,\cite{Parrish:2017:3185}
+     NWChem,\cite{Apra:2020:nwchem}
+     Psi4,\cite{Parrish:2017:3185,Smith:2020:psi4}
      Q-Chem,\cite{Shao:2015:184}
      Terachem,\cite{Ufimtsev:2009:2619}
      Turbomole\cite{Furche:2014:91}
