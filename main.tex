@@ -294,8 +294,7 @@ The SQL database is structured so that each type of \qcel object stored (\texttt
 For example, a single \texttt{Molecule} object can be related to many different energy or gradient calculations so that the molecule is not duplicated, saving space, and all computations related to the molecule can be quickly queried.
 Each stored object has a carefully constructed unique identifier that can be computed from the object itself.
 The unique identifier makes it trivial to identify duplicate records and prevent the same calculation from being run twice.
-\textcolor{red}{For example, unique identifiers for given single point computation are molecule, method, basis,
-program, and keyword arguments create a unique computation.}
+\textcolor{red}{For example, fields for a single-point computation are molecule, method, basis, program, and a unique keyword set identifier, which together describe a unique computation in the database.}
 If a computation with the same molecule is requested by another computation, each computation links to the same molecule in the database.
 This linking structure makes tedious composite computations of multiple molecular properties effortless.
 
@@ -479,7 +478,7 @@ We hope this kind of software infrastructure and data gathering methods will pus
 
 \section{Acknowledgements}
 
-We are grateful to Shantenu Jha, Matteo Turilli, Andre Merzky, Matt Horton, Lee-Ping Wang, Sebastian Lee, and John Chodera for helpful discussions.
+We are grateful to Shantenu Jha, Matteo Turilli, Andre Merzky, Matt Horton, Lee-Ping Wang, Yudong Qiu, Sebastian Lee, David Dotson, and John Chodera for helpful discussions.
 
 \section{Funding Information}
 
